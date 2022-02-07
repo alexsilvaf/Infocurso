@@ -33,7 +33,7 @@ CREATE TABLE `aula` (
   UNIQUE KEY `idAula_UNIQUE` (`idAula`),
   KEY `fk_aula_curs1_idx` (`idCurs`),
   CONSTRAINT `fk_aula_curs1` FOREIGN KEY (`idCurs`) REFERENCES `curs` (`idCurs`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,11 +54,11 @@ DROP TABLE IF EXISTS `catg`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `catg` (
   `idCatg` int unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(15) NOT NULL,
+  `nome` varchar(30) NOT NULL,
   PRIMARY KEY (`idCatg`),
   UNIQUE KEY `idCatg_UNIQUE` (`idCatg`),
   UNIQUE KEY `nomeCatg_UNIQUE` (`nome`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +67,7 @@ CREATE TABLE `catg` (
 
 LOCK TABLES `catg` WRITE;
 /*!40000 ALTER TABLE `catg` DISABLE KEYS */;
+INSERT INTO `catg` VALUES (2,'Administração'),(3,'Ciências Contábeis'),(5,'Engenharia Elétrica'),(1,'Informática'),(4,'Recursos Humanos');
 /*!40000 ALTER TABLE `catg` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +94,7 @@ CREATE TABLE `curs` (
   CONSTRAINT `fk_curs_catg1` FOREIGN KEY (`idCatg`) REFERENCES `catg` (`idCatg`),
   CONSTRAINT `fk_curs_nivl1` FOREIGN KEY (`idNivl`) REFERENCES `nivl` (`idNivl`),
   CONSTRAINT `fk_curs_usua1` FOREIGN KEY (`idProfessor`) REFERENCES `usua` (`idUsua`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +119,7 @@ CREATE TABLE `nivl` (
   PRIMARY KEY (`idNivl`),
   UNIQUE KEY `idNivl_UNIQUE` (`idNivl`),
   UNIQUE KEY `nome_UNIQUE` (`nome`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,6 +128,7 @@ CREATE TABLE `nivl` (
 
 LOCK TABLES `nivl` WRITE;
 /*!40000 ALTER TABLE `nivl` DISABLE KEYS */;
+INSERT INTO `nivl` VALUES (3,'Avançado'),(1,'Básico'),(2,'Intermediário');
 /*!40000 ALTER TABLE `nivl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,9 +190,13 @@ CREATE TABLE `usua` (
 
 LOCK TABLES `usua` WRITE;
 /*!40000 ALTER TABLE `usua` DISABLE KEYS */;
-INSERT INTO `usua` VALUES (1,'Admin','admin@infocurso.com.br','(00) 0 0000-0000',NULL,'000.000.000-00','0.000.000','123','2000-09-12',1);
+INSERT INTO `usua` VALUES (1,'Admin','admin@infocurso.com.br','(00) 0 0000-0000','(28) 9 8804-6220','000.000.000-00','0.000.000','123','2000-09-12',1);
 /*!40000 ALTER TABLE `usua` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'db_infocourse'
+--
 
 --
 -- Dumping routines for database 'db_infocourse'
@@ -205,4 +211,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-24 16:37:00
+-- Dump completed on 2022-02-07 18:01:44
